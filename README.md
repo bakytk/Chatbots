@@ -8,7 +8,7 @@ width="500"><br/><br/>
 
 This app is about building several NLP prototypes on Pytorch that could be handy for some business applications, like language learning or marketing
 
-Work in progress ...
+We'll start with a language translation model
 
 
 
