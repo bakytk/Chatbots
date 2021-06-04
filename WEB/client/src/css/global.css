@@ -1,0 +1,39 @@
+	
+.header-text {
+	
+	font-family: "Verdana", Geneva, sans-serif;
+	font-weight: bold;
+	color: #01233f;
+	Z-index:777;
+}
+
+.paragraf-text {
+	
+	font-family: "Verdana", Geneva, sans-serif;
+	color: #01233f;
+}
+
+.center {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+  background-color: #01233f; 
+  border: none;
+  color: white;
+  font-weight: bold;	
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 12px;
+  font-size: 15px;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+
