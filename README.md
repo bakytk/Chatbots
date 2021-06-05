@@ -7,7 +7,7 @@ The goal of this project is to deploy several transformer-based NLP API from Hug
 
 The project app schema can be depicted as follows:
 
-<img src="https://i.ibb.co/WxS1XZF/Slide1.jpg" width="700" height="300"><br><br>
+<img src="https://i.ibb.co/WxS1XZF/Slide1.jpg" width="600" height="300"><br><br>
 
 
 
