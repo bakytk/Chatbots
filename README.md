@@ -7,7 +7,7 @@ The goal of this project is to deploy several transformer-based NLP API from Hug
 
 The project app schema can be depicted as follows:
 
-<img src="https://i.ibb.co/mSf51mz/schema.jpg.jpg" width="700" height="400"><br><br>
+<img src="https://i.ibb.co/mSf51mz/schema.jpg.jpg" width="700" height="300"><br><br>
 
 
 ```
@@ -17,8 +17,8 @@ The project app schema can be depicted as follows:
 cd WEB/client
 
 npm install && npm build 
-cp index.html web_server_repo
-npm 
+cp dist/index.html ../server
+
 
 
 # API server
