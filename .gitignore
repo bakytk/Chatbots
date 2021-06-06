@@ -1,8 +1,7 @@
 nlp-api
-__pycache__
+__pycache__/
 WEB/client/node_modules/
 WEB/setup
-WEB/client/package.json
 WEB/client/package-lock.json
 
 

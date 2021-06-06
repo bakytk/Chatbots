@@ -6,8 +6,8 @@
 			   :style="{ background: 'url(' + images[0]+ ') no-repeat center' }">
 
 			<div style="text-align: center">
-				<div style="font-size: 30px; padding-top: 25%; ">
-					<div style="padding-left: 30%; padding-right: 30%;"> 
+				<div style="font-size: 30px; padding-top: 5%; ">
+					<div style="padding-left: 60%; padding-right: 10%;"> 
 						<p class="header-text"> 
 							<span style="">{{ text }} </span>
 						</p>
@@ -45,10 +45,10 @@ export default {
 	
 		smallDevice: false,
 	
-		imgID: [442574, 2528118],
+		imgID: [257923, 2066896],
 		images: [],
 	
-		text: "Concept stage startup, aiming to build messenger bots that can help SME's automate their routines"
+		text: "NLP bot testing demo. Scroll down"
 	}
   },
 	

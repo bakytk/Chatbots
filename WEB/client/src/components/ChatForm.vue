@@ -43,23 +43,17 @@ export default {
   data() {
         return {
             visible: true,
-            
             participants: [
                 {
-                    name: 'Arnaldo',
+                    name: 'Person',
                     id: 1,
-                    profilePicture: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a1/NafSadh_Profile.jpg/768px-NafSadh_Profile.jpg'
-                },
-                {
-                    name: 'José',
-                    id: 2,
-                    profilePicture: 'https://lh3.googleusercontent.com/-G1d4-a7d_TY/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJPez_wX5UCJztzEUeCxOd7HBK7-jA.CMID/s83-c/photo.jpg'
+                    profilePicture: 'https://i.ibb.co/fXkS9xb/pers.webp'
                 }
             ],
             myself: {
-                name: 'Matheus S.',
-                id: 3,
-                profilePicture: 'https://lh3.googleusercontent.com/-G1d4-a7d_TY/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJPez_wX5UCJztzEUeCxOd7HBK7-jA.CMID/s83-c/photo.jpg'
+                name: 'Chatbot',
+                id: 2,
+                profilePicture: 'https://i.ibb.co/StbWmWZ/chatbots.jpg'
             },
             messages: [
                 {
@@ -72,20 +66,13 @@ export default {
                 {
                     content: 'sent messages',
                     myself: true,
-                    participantId: 3,
+                    participantId: 2,
                     timestamp: {year: 2019, month: 4, day: 5, hour: 19, minute: 10, second: 3, millisecond: 123},
                     type: 'text'
                 },
-                {
-                    content: 'other received messages',
-                    myself: false,
-                    participantId: 2,
-                    timestamp: {year: 2019, month: 5, day: 5, hour: 10, minute: 10, second: 3, millisecond: 123},
-                    type: 'text'
-                }
             ],
-            chatTitle: 'My chat title',
-            placeholder: 'send your message',
+            chatTitle: 'Demo chat app',
+            placeholder: 'Send your message',
             colors: {
                 header: {
                     bg: '#d30303',
@@ -105,7 +92,6 @@ export default {
                     }
                 },
                 submitIcon: '#b91010',
-                submitImageIcon: '#b91010',
             },
             borderStyle: {
                 topLeft: "10px",
@@ -115,14 +101,13 @@ export default {
             },
             hideCloseButton: false,
             submitIconSize: 25,
-            submitImageIconSize: 25,
             closeButtonIconSize: "20px",
             asyncMode: false,
             toLoad: [
                 {
                     content: 'Hey, John Doe! How are you today?',
                     myself: false,
-                    participantId: 2,
+                    participantId: 1,
                     timestamp: {year: 2011, month: 3, day: 5, hour: 10, minute: 10, second: 3, millisecond: 123},
                     uploaded: true,
                     viewed: true,
@@ -131,7 +116,7 @@ export default {
                 {
                     content: "Hey, Adam! I'm feeling really fine this evening.",
                     myself: true,
-                    participantId: 3,
+                    participantId: 2,
                     timestamp: {year: 2010, month: 0, day: 5, hour: 19, minute: 10, second: 3, millisecond: 123},
                     uploaded: true,
                     viewed: true,

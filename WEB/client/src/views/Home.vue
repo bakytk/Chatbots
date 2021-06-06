@@ -2,8 +2,7 @@
   <div>
 	 
 	 <hero></hero>
-	 <proto></proto>
-  	 <author></author>
+	 <chatform></chatform>
 	  
   </div>
 </template>
@@ -11,18 +10,15 @@
 <script>
 	
 import hero from '@/components/Hero.vue';
-import proto from '@/components/Proto.vue';
-import author from '@/components/Author.vue';
+import chatform from '@/components/ChatForm.vue';
 	
 export default {
 
   components: {	
 		hero,
-		proto,
-		author
+		chatform
  	},
 }
-	
 </script>
 
 <style scoped>

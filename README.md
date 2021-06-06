@@ -3,7 +3,7 @@
 
 **NLP-API's**<br>
 
-The goal of this project is to deploy several transformer-based NLP API from HuggingFace repos, serve them with Flask (FastAPI) and render access to theme through a Node.js web server. The basic front-end will be built on Vue.js
+The goal of this project is to deploy several transformer-based NLP API from HuggingFace repos, serve them with Flask (FastAPI) and render access to them through a Node.js web server. The basic front-end will be built on Vue.js
 
 The project app schema can be depicted as follows:
 
