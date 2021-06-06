@@ -1,28 +1,37 @@
 
 
-
 **NLP-API's**<br>
 
-The goal of this project is to deploy several transformer-based NLP API from HuggingFace repos, serve them with Flask (FastAPI) and render access to them through a Node.js web server. The basic front-end will be built on Vue.js
+The goal of this project is to deploy several transformer-based NLP API from HuggingFace repos, served them with Flask (FastAPI), while client-interfacing web stack is via Vue.js-Node.js.
 
-The project app schema can be depicted as follows:
+The project app schema how it's deployed on a cloud server can be depicted as follows:
 
 <img src="https://i.ibb.co/WxS1XZF/Slide1.jpg" width="600" height="300"><br><br>
 
 
+To abstract away from remote cloud server settings, the code here is to ready to test locally, the following (localhost) ports will be accessed on your machine:
+
+```
+# set ENV_PARAMS in .env:
+
+VUE_PORT=8080 (optional: if you 'npm run serve')
+NODE_PORT=7000
+FLASK_PORT=9000
+```
 
 ```
 
 # instantiate client interfaces
 
 cd WEB/client
-
 npm install && npm build 
-cp dist/index.html ../server
+
+cd WEB/server
+npm install & npm start
 
 
 
-# API server
+# hidden API modules
 
 python3 -m venv env
 source env/bin/activate
