@@ -1,7 +1,4 @@
 torch
 transformers
-memory_profiler
-redis
-flask
-gunicorn
+sqlalchemy
 
