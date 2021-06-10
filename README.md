@@ -48,17 +48,3 @@ python3 app.py
 
 
 
-```
-
-# Test API server from  cmd
-
-curl --header "Content-Type: application/json" \
-	--request POST \
-	http://127.0.0.1:5000/calc_proba \
-    --data '{"age": 31, "job": "blue-collar", "marital": "married", "education": "high.school", 
-"default": "no", "housing": "no", "loan": "no", "contact": "cellular", "month": "jul", 
-"day_of_week": "wed", "duration": 248, "campaign": 2, "pdays": 999, "previous": 0, 
-"poutcome": "nonexistent", "emp.var.rate": 1.4, "cons.price.idx": 93.918, "cons.conf.idx": -42.7,
-"euribor3m": 4.963, "nr.employed": 5228.1}'
-```
-
