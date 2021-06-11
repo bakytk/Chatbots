@@ -1,19 +1,29 @@
 
-FROM python:3.7-alpine
+FROM ubuntu:20.04
 
-RUN mkdir /app
-WORKDIR /app
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y python3-pip
+CMD tail -f /dev/null
 
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
+#RUN apt-get install -y python3-pip
+#RUN pip install --upgrade pip
+#RUN pip install scikit-learn flask-restful redis flask
 
-ADD requirements.txt /app
-ADD server.py /app
+#COPY . /model
 
-RUN python3 -m pip install -r requirements.txt
-COPY . .
+#EXPOSE 8100
 
-#CMD ["flask", "run"]
+#ENV ml_debug_level=1
+#ENV environment PRODUCTION
 
-CMD ["gunicorn", "-w 4", "-b", "0.0.0.0:8000", "server:app"]
+#CMD ["python", "/model/server.py"]
+
+# ADD requirements.txt /app
+# RUN python3 -m pip install -r requirements.txt
+# CMD ["flask", "run"]
+# CMD ["gunicorn", "-w 4", "-b", "0.0.0.0:8000", "server:app"]
+
+# docker images
+# docker build -t nlp_app .
 
