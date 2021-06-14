@@ -23,21 +23,3 @@ with engine.connect() as connection:
 	for r in result_set:
 		print (r)
 
-"""
-famous_folks = [
-('Pulp', 'Quentin', 1994),
-('Future', 'Spielberg', 1985),
-('Kingdom', 'Andersen', 2012)
-]
-
-cursor.executemany('INSERT INTO Movies VALUES (?,?,?)', famousFilms)
-
-release=(1985,)
-r = cursor.execute('SELECT * FROM Movies where year=?', release)
-print (cursor.fetchall())
-
-
-connection.commit()
-connection.close()
-
-"""

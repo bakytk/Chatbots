@@ -1,0 +1,176 @@
+
+-------------------------- CHAR ---------------------
+=====================================================
+
+* _ () " % @ ~
+? + # & $ | § ^
+: { } . < > !  
+8 9 № l L o O
+Ю ю Щ щ Д д ё
+
+
+-------------------------- STD ----------------------
+=====================================================
+
+! ls -a
+cd ..
+clear
+
+mv * ..
+
+source ~/.bash_profile
+nano ~/.bash_profile
+sudo rm *
+
+script.py renamed to resnet.py
+
+npm run serve
+npm run build
+
+
+-------------------------- RUN ----------------------
+=====================================================
+
+source ~/.bash_profile
+fask
+
+python3 script.py
+jupyter-notebook
+
+pm2 start resnet.js
+
+-------------------------- GIT ---------------------
+=====================================================
+
+nano .gitignore
+ 
+setup
+
+client/
+resnet/resnet.service
+
+bakytkh@outlook.com
+Aa540131
+
+git init
+git add .
+git commit -m "commit"
+git remote add github-resnet https://github.com/bakytk/Flask-Resnet.git
+git push github-resnet master
+git pull
+
+
+-------------------------- CLIENT -------------------
+=====================================================
+
+source ~/.bash_profile
+resnet
+
+npm run serve
+npm run build
+
+https://vuejsexamples.com/a-simple-chat-component-created-with-vue-js
+https://codepen.io/manifoldkaizen/pen/oqzOKw
+
+https://www.npmjs.com/package/vue-quick-chat-m
+https://www.npmjs.com/package/vue-quick-chat
+
+<a href="https://ibb.co/StbWmWZ"><img src="https://i.ibb.co/StbWmWZ/chatbots.jpg" alt="chatbots" border="0"></a>
+<a href="https://ibb.co/fXkS9xb"><img src="https://i.ibb.co/fXkS9xb/pers.webp" alt="pers" border="0"></a>
+
+-------------------------- NETLIFY ------------------
+=====================================================
+
+sudo npm i -g netlify-cli
+netlify deploy --prod
+
+netlify status
+netlify login
+
+netlify unlink
+netlify init
+
+https://app.netlify.com/sites/pyresnet
+https://pyresnet.netlify.app
+
+-------------------------- VENV --------------------
+=====================================================
+
+virtualenv --python python3 env
+source env/bin/activate
+
+pip install Flask uswsgi googledrivedownloader Flask-Cors
+pip --no-cache-dir install torchvision
+
+python3 resnet.py
+
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+-------------------------- MISC --------------
+=====================================================
+
+
+https://testdriven.io/blog/developing-a-single-page-app-with-flask-and-vuejs/
+https://pytorch.org/tutorials/intermediate/flask_rest_api_tutorial.html
+https://github.com/avinassh/pytorch-flask-api-heroku
+
+NNPACK.cpp:80] Could not initialize NNPACK! Reason: Unsupported hardware
+
+-------------------------- SERVER-SETUP -------------
+=====================================================
+
+
+sudo apt install python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
+sudo apt install python3-venv
+
+mkdir /home/resnet
+cd /home/resnet
+
+python3 -m venv env
+source env/bin/activate
+
+pip3 install wheel uwsgi flask googledrivedownloader
+
+1=sudo nano resnet.py
+...
+python3 resnet.py
+
+2=sudo nano wsgi.py
+uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi:app
+
+3=sudo nano resnet.ini
+...
+
+4=sudo nano /etc/systemd/system/resnet.service
+...
+
+systemctl daemon-reload
+sudo systemctl start resnet
+sudo systemctl enable resnet
+sudo systemctl status resnet
+sudo systemctl stop resnet
+
+5=sudo nano /etc/nginx/sites-available/default
+
+server {
+
+    listen 80;
+    server_name your_domain www.your_domain;
+
+    location /flask {
+    
+        include uwsgi_params;
+        uwsgi_pass unix:/home/flask/script.sock;
+    }
+}
+
+sudo less /var/log/nginx/error.log: checks the Nginx error logs.
+sudo less /var/log/nginx/access.log: checks the Nginx access logs.
+sudo journalctl -u nginx: checks the Nginx process logs.
+sudo journalctl -u myproject: checks your Flask app’s uWSGI logs.
+
+
+
+
+
