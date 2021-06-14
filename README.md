@@ -2,7 +2,7 @@
 
 **Chatbots**<br>
 
-The goal of this project is to deploy several transformer-based chatbots from HuggingFace repos, served them with Flask, while client-interfacing web stack is on Vue.js-Node.js.
+The goal of this project is to deploy several transformer-based chatbots from HuggingFace repos, serving them with Flask, while building client-interfacing web stack is on Vue.js-Node.js.
 
 The project app schema how it's deployed on a cloud server can be depicted as follows:
 
