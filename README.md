@@ -1,12 +1,12 @@
 
 
-**NLP-API's**<br>
+**Chatbots**<br>
 
-The goal of this project is to deploy several transformer-based NLP API from HuggingFace repos, served them with Flask/FastAPI, while client-interfacing web stack is via Vue.js-Node.js.
+The goal of this project is to deploy several transformer-based chatbots from HuggingFace repos, served them with Flask, while client-interfacing web stack is on Vue.js-Node.js.
 
 The project app schema how it's deployed on a cloud server can be depicted as follows:
 
-<img src="https://i.ibb.co/WxS1XZF/Slide1.jpg" width="700" height="300"><br><br>
+<img src="https://i.ibb.co/WxS1XZF/Slide1.jpg" width="700" height="400"><br><br>
 
 The first two models that will be available are:
 
