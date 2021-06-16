@@ -45,31 +45,24 @@ export default {
             visible: true,
             participants: [
                 {
-                    name: 'Person',
+                    name: 'Chatbot',
                     id: 1,
-                    profilePicture: 'https://i.ibb.co/fXkS9xb/pers.webp'
+                    profilePicture: 'https://i.ibb.co/StbWmWZ/chatbots.jpg'
                 }
             ],
             myself: {
-                name: 'Chatbot',
+                name: 'Visitor',
                 id: 2,
-                profilePicture: 'https://i.ibb.co/StbWmWZ/chatbots.jpg'
+                profilePicture: 'https://i.ibb.co/fXkS9xb/pers.webp'
             },
             messages: [
-                {
-                    content: 'received messages',
-                    myself: false,
-                    participantId: 1,
-                    timestamp: {year: 2019, month: 3, day: 5, hour: 20, minute: 10, second: 3, millisecond: 123},
-                    type: 'text'
-                },
-                {
-                    content: 'sent messages',
-                    myself: true,
-                    participantId: 2,
-                    timestamp: {year: 2019, month: 4, day: 5, hour: 19, minute: 10, second: 3, millisecond: 123},
-                    type: 'text'
-                },
+               //{
+               //    content: 'received messages',
+               //    myself: true,
+               //    participantId: 2,
+               //    timestamp: {year: 2019, month: 3, day: 5, hour: 20, minute: 10, second: 3, millisecond: 123},
+               //    type: 'text'
+               //},
             ],
             chatTitle: 'Demo chat app',
             placeholder: 'Send your message',
@@ -105,19 +98,10 @@ export default {
             asyncMode: false,
             toLoad: [
                 {
-                    content: 'Hey, John Doe! How are you today?',
+                    content: "Hello, there! Let's have some chat",
                     myself: false,
                     participantId: 1,
-                    timestamp: {year: 2011, month: 3, day: 5, hour: 10, minute: 10, second: 3, millisecond: 123},
-                    uploaded: true,
-                    viewed: true,
-                    type: 'text'
-                },
-                {
-                    content: "Hey, Adam! I'm feeling really fine this evening.",
-                    myself: true,
-                    participantId: 2,
-                    timestamp: {year: 2010, month: 0, day: 5, hour: 19, minute: 10, second: 3, millisecond: 123},
+                    timestamp: {year: 2021, month: 7, day: 16, hour: 19, minute: 10, second: 3, millisecond: 123},
                     uploaded: true,
                     viewed: true,
                     type: 'text'
@@ -183,7 +167,7 @@ export default {
     },
     methods: {
         onType: function (event) {
-            //here you can set any behavior
+            //console.log(event)
         },
         loadMoreMessages(resolve) {
             setTimeout(() => {
@@ -193,22 +177,44 @@ export default {
                 this.toLoad = [];
             }, 1000);
         },
-        onMessageSubmit: function (message) {
-            /*
-            * example simulating an upload callback. 
-            * It's important to notice that even when your message wasn't send 
-            * yet to the server you have to add the message into the array
-            */
-            this.messages.push(message);
 
-            /*
-            * you can update message state after the server response
+        onMessageSubmit: function (message) {
+
+            /* 
+             It's important to notice that even when your message wasn't send 
+             yet to the server you have to add the message into the array
             */
-            // timeout simulating the request
-            setTimeout(() => {
-                message.uploaded = true
-            }, 2000)
+
+            this.messages.push(message);
+            msg_copy = message;
+
+            try {
+
+                this.$axios.post('/message', message)
+                .then(resp => { 
+
+                    console.log(resp);
+                    if (resp.data.success == true) {
+            
+                        msg_copy.content = resp.data.message;
+                        msg_copy.participantId = 1;
+                        this.messages.push(message);
+                    }
+                    
+                }); 
+
+            }
+
+            catch(e) {
+
+                msg_copy.content = 'unable to receive server response';
+                msg_copy.participantId = 1;
+                this.messages.push(message);
+
+                console.error (e);
+            }
         },
+
         onClose() {
             this.visible = false;
         },

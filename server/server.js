@@ -19,7 +19,6 @@ app.use(history({
   disableDotRule: true
 }));
 
-
 const router = express.Router();
 router.use(cors())
 app.use(router);
@@ -29,11 +28,27 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100
 });
+
 app.use(limiter);
 
 router.get("/",function(req,res){
+	
 	res.sendFile("index.html");
  });
+
+router.post("/message", jsonParser, function(req,res){
+	
+	let msg = req.body;
+	//console.log(msg)
+	
+	res.json({
+        success : true,
+        message : 'static response: no api connected yet',
+    });
+    
+ });
+
+
 
 
 // ------------------- START APP -------------------------
