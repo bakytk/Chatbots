@@ -3,7 +3,8 @@
 	 
 	 <hero></hero>
 	 <chatform></chatform>
-	  
+	 
+	 
   </div>
 </template>
 

@@ -1,28 +1,30 @@
 <template>
-  <div>
-      <Chat v-if="visible"
-        :participants="participants"
-        :myself="myself"
-        :messages="messages"
-        :chat-title="chatTitle"
-        :placeholder="placeholder"
-        :colors="colors"
-        :border-style="borderStyle"
-        :hide-close-button="hideCloseButton"
-        :close-button-icon-size="closeButtonIconSize"
-        :load-more-messages="toLoad.length > 0 ? loadMoreMessages : null"
-        :async-mode="asyncMode"
-        :scroll-bottom="scrollBottom"
-        :display-header="true"
-        :send-images="true"
-        :profile-picture-config="profilePictureConfig"
-        :timestamp-config="timestampConfig"
-        :link-options="linkOptions"
-        :accept-image-types="'.png, .jpeg'"
-        @onMessageSubmit="onMessageSubmit"
-        @onType="onType"
-        @onClose="onClose"/>
-   </div>
+    <div>
+      <div style="width:50%; margin: 0 auto">
+          <Chat v-if="visible"
+            :participants="participants"
+            :myself="myself"
+            :messages="messages"
+            :chat-title="chatTitle"
+            :placeholder="placeholder"
+            :colors="colors"
+            :border-style="borderStyle"
+            :hide-close-button="hideCloseButton"
+            :close-button-icon-size="closeButtonIconSize"
+            :load-more-messages="toLoad.length > 0 ? loadMoreMessages : null"
+            :async-mode="asyncMode"
+            :scroll-bottom="scrollBottom"
+            :display-header="true"
+            :send-images="true"
+            :profile-picture-config="profilePictureConfig"
+            :timestamp-config="timestampConfig"
+            :link-options="linkOptions"
+            :accept-image-types="'.png, .jpeg'"
+            @onMessageSubmit="onMessageSubmit"
+            @onType="onType"
+            @onClose="onClose"/>
+       </div>
+    </div>
 </template>
 
 <script>
@@ -46,7 +48,7 @@ export default {
                 }
             ],
             myself: {
-                name: 'Visitor', id: 2,
+                name: 'Guest', id: 2,
                 profilePicture: 'https://i.ibb.co/fXkS9xb/pers.webp'
             },
             

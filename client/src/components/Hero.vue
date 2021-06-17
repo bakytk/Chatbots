@@ -1,13 +1,13 @@
 <template>
   <div>
 	  
-	  <div v-if="!smallDevice">
+	  <div v-if="!smallDevice" style="height:200px">
 		  <div class="hero" 
 			   :style="{ background: 'url(' + images[0]+ ') no-repeat center' }">
 
 			<div style="text-align: center">
 				<div style="font-size: 30px; padding-top: 5%; ">
-					<div style="padding-left: 60%; padding-right: 10%;"> 
+					<div style="padding-left: 50%; padding-right: 10%;"> 
 						<p class="header-text"> 
 							<span style="">{{ text }} </span>
 						</p>
@@ -48,7 +48,7 @@ export default {
 		imgID: [257923, 2066896],
 		images: [],
 	
-		text: "NLP bot testing demo. Scroll down"
+		text: "NLP bot testing site"
 	}
   },
 	
