@@ -17,6 +17,7 @@ import axios from 'axios';
 import Vueaxios from 'vue-axios';
 Vue.use(Vueaxios, axios);
 
+//http://localhost:10000
 const axiosConfig = {
 
 	baseURL: 'https://nlp-app.club',

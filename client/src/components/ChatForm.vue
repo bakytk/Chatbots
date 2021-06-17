@@ -10,8 +10,6 @@
         :border-style="borderStyle"
         :hide-close-button="hideCloseButton"
         :close-button-icon-size="closeButtonIconSize"
-        :submit-icon-size="submitIconSize"
-        :submit-image-icon-size="submitImageIconSize"
         :load-more-messages="toLoad.length > 0 ? loadMoreMessages : null"
         :async-mode="asyncMode"
         :scroll-bottom="scrollBottom"
@@ -21,8 +19,6 @@
         :timestamp-config="timestampConfig"
         :link-options="linkOptions"
         :accept-image-types="'.png, .jpeg'"
-        @onImageClicked="onImageClicked"
-        @onImageSelected="onImageSelected"
         @onMessageSubmit="onMessageSubmit"
         @onType="onType"
         @onClose="onClose"/>
@@ -45,16 +41,15 @@ export default {
             visible: true,
             participants: [
                 {
-                    name: 'Chatbot',
-                    id: 1,
+                    name: 'Chatbot', id: 1,
                     profilePicture: 'https://i.ibb.co/StbWmWZ/chatbots.jpg'
                 }
             ],
             myself: {
-                name: 'Visitor',
-                id: 2,
+                name: 'Visitor', id: 2,
                 profilePicture: 'https://i.ibb.co/fXkS9xb/pers.webp'
             },
+            
             messages: [
                //{
                //    content: 'received messages',
@@ -165,10 +160,12 @@ export default {
             }
         }
     },
+
     methods: {
         onType: function (event) {
             //console.log(event)
         },
+
         loadMoreMessages(resolve) {
             setTimeout(() => {
                 resolve(this.toLoad); //We end the loading state and add the messages
@@ -186,58 +183,41 @@ export default {
             */
 
             this.messages.push(message);
-            msg_copy = message;
 
-            try {
+            let msg = Object.assign({}, message);
+            console.log (msg)
 
-                this.$axios.post('/message', message)
-                .then(resp => { 
+            this.$axios.post('/message', message)
+            .then(resp => { 
 
-                    console.log(resp);
-                    if (resp.data.success == true) {
-            
-                        msg_copy.content = resp.data.message;
-                        msg_copy.participantId = 1;
-                        this.messages.push(message);
-                    }
-                    
-                }); 
+	            if (resp.data.success == true) {
 
-            }
+	            	let dt = new Date();
+	            	var sec = dt.getSeconds();
+					var min = dt.getMinutes();
+					var hr = dt.getHours();
+					var milli = dt.getMilliseconds();
+	            	let date = dt.getDate();
+					let month = dt.getMonth()+1; // Be careful! January is 0, not 1
+					let year = dt.getFullYear();
 
-            catch(e) {
+					let ts = {year: year, month: month, day: date, 
+						hour: hr, minute: min, second: sec, millisecond: milli}
 
-                msg_copy.content = 'unable to receive server response';
-                msg_copy.participantId = 1;
-                this.messages.push(message);
+	                msg.content = resp.data.message;
+	                msg.participantId = 1;
+	                msg.timestamp = ts 
 
-                console.error (e);
-            }
+	                this.messages.push(msg);
+            	}
+            });
+
         },
 
         onClose() {
             this.visible = false;
-        },
-        onImageSelected(files, message){
-            let src = 'https://149364066.v2.pressablecdn.com/wp-content/uploads/2017/03/vue.jpg'
-            this.messages.push(message);
-            /**
-             * This timeout simulates a requisition that uploads the image file to the server.
-             * It's up to you implement the request and deal with the response in order to
-             * update the message status and the message URL
-             */
-            setTimeout((res) => {
-                message.uploaded = true
-                message.src = res.src
-            }, 3000, {src});
-        },
-        onImageClicked(message){
-            /**
-             * This is the callback function that is going to be executed when some image is clicked.
-             * You can add your code here to do whatever you need with the image clicked. A common situation is to display the image clicked in full screen.
-             */
-            console.log('Image clicked', message.src)
         }
+
     }
 }
 

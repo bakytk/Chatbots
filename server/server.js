@@ -3,6 +3,7 @@ require('dotenv').config()
 
 var express = require('express');
 var app = express();
+
 const PORT = process.env.NODEPORT; 
 
 const bodyParser= require('body-parser')
@@ -39,11 +40,9 @@ router.get("/",function(req,res){
 router.post("/message", jsonParser, function(req,res){
 	
 	let msg = req.body;
-	//console.log(msg)
-	
 	res.json({
         success : true,
-        message : 'static response: no api connected yet',
+        message : 'Patience, young padavan: no api connected yet',
     });
     
  });
