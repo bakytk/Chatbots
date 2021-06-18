@@ -1,8 +1,9 @@
 
 require('dotenv').config()
+const axios = require('axios');
 
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
 const PORT = process.env.NODEPORT; 
 
@@ -40,11 +41,34 @@ router.get("/",function(req,res){
 router.post("/message", jsonParser, function(req,res){
 	
 	let msg = req.body;
+	//console.log (msg);
+	let api_url = process.env.API_URL;
+	
 	res.json({
-        success : true,
-        message : 'Patience, young padavan: no api connected yet',
-    });
-    
+			success : true,
+			message : 'Patience, young padavan: no api connected yet..',
+		 });
+	
+	/*
+	try {
+		
+		axios.get( api_url + '/model_call', { params: { message: msg.content } })
+		.then((r)=> {
+			 
+			res.json({
+				success : true,
+				message : r.data.response,
+			});
+		});
+		 
+	} catch(e) {
+		
+		 res.json({
+			success : false,
+			message : 'Server processing error..',
+		 });
+	}
+	*/
  });
 
 

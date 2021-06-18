@@ -1,27 +1,33 @@
 import pdb
-from transformers import pipeline, Conversation
-conversational_pipeline = pipeline('conversational')
 
+from transformers import pipeline, Conversation
+conversational_pipe = pipeline('conversational')
+
+starter_phrase = 'Do you know Yoda Master from Star Wars'
+conv = Conversation (starter_phrase)
+
+def get_response (question):
+
+  conv.add_user_input (question)
+  pipe = conversational_pipe ([conv])
+  responses = pipe.generated_responses
+  return responses[-1]
+
+
+"""
 try:
 
-  conv1_start = 'Let’s watch a movie tonight — any recommendations?'
-  conv2_start = 'What’s your favorite book?'
+  Questions = [ 'Let's go to a restaurant',
+                'Do you know any cinema around?',
+                'Any films related to AI and sci-fi?',
+                'Is it rainy day today?',
+                'How old are you?' ]
 
-  conv1 = Conversation(conv1_start)
-  conv2 = Conversation(conv2_start)
-
-  p1 = conversational_pipeline([conv1, conv2])
-  print (p1)
-
-  conv1_next = 'What is it about?'
-  conv2_next = 'Cool, what is the genre of the book?'
-
-  conv1.add_user_input(conv1_next)
-  conv2.add_user_input(conv2_next)
-
-  p1 = conversational_pipeline([conv1, conv2])
-  print (p1)
+  for q in Questions[0]:
+	  
+    r = get_response (q)
+    print (r)
   
 except Exception as e:
-	
   print (e)
+"""
