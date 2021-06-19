@@ -33,10 +33,11 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
-router.get("/",function(req,res){
+
+router.get("/",function(req,res){ 
 	
 	res.sendFile("index.html");
- });
+	}); 
 
 router.post("/message", jsonParser, function(req,res){
 	
@@ -44,12 +45,7 @@ router.post("/message", jsonParser, function(req,res){
 	//console.log (msg);
 	let api_url = process.env.API_URL;
 	
-	res.json({
-			success : true,
-			message : 'Patience, young padavan: no api connected yet..',
-		 });
 	
-	/*
 	try {
 		
 		axios.get( api_url + '/model_call', { params: { message: msg.content } })
@@ -68,7 +64,7 @@ router.post("/message", jsonParser, function(req,res){
 			message : 'Server processing error..',
 		 });
 	}
-	*/
+	
  });
 
 

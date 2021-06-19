@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div style="width:50%; margin: 0 auto">
+      <div :style="styleObject">
           <Chat v-if="visible"
             :participants="participants"
             :myself="myself"
@@ -40,13 +40,17 @@ export default {
 
   data() {
         return {
+
             visible: true,
-            participants: [
-                {
+
+            smallDevice: false,
+
+            participants: [{
+
                     name: 'Chatbot', id: 1,
                     profilePicture: 'https://i.ibb.co/StbWmWZ/chatbots.jpg'
-                }
-            ],
+                }],
+
             myself: {
                 name: 'Guest', id: 2,
                 profilePicture: 'https://i.ibb.co/fXkS9xb/pers.webp'
@@ -61,6 +65,7 @@ export default {
                //    type: 'text'
                //},
             ],
+
             chatTitle: 'Demo chat app',
             placeholder: 'Send your message',
             colors: {
@@ -163,6 +168,13 @@ export default {
         }
     },
 
+    computed: {
+
+	  styleObject: function () {
+	    return this.smallDevice ? { 'width' : '100%' } : { 'width': '50%', 'margin': '0 auto'}
+	  }
+	},
+
     methods: {
         onType: function (event) {
             //console.log(event)
@@ -220,7 +232,12 @@ export default {
             this.visible = false;
         }
 
-    }
+    },
+
+    mounted () {
+
+		if (this.$mq ==='mobile' || this.$mq ==='tablet') { this.smallDevice = true; }
+    },
 }
 
 </script>

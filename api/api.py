@@ -17,7 +17,7 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 def model_call():
 	
     user_message = request.args.get('message')
-    #print ('user_message', user_message)
+    # print ('user_message', user_message)
     response = get_response (user_message)
     
     return jsonify(response=response)
