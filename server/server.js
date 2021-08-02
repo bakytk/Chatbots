@@ -1,79 +1,50 @@
 
 require('dotenv').config()
-const axios = require('axios');
+const PORT = process.env.NODE_PORT;
 
 const express = require('express');
 const app = express();
 
-const PORT = process.env.NODEPORT; 
+app.set('trust proxy', 1);
+
+const cookieSession = require('cookie-session');
+//const createError = require('http-errors');
 
 const bodyParser= require('body-parser')
-app.use(express.static('../client/dist'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 const cors = require('cors')
-const jsonParser = bodyParser.json()
-const urlParser = bodyParser.urlencoded({ extended: true })
+app.use(cors())
 
-const history = require('connect-history-api-fallback');
-app.use(require('connect-history-api-fallback')())
-app.use(history({
-  verbose: true,
-  disableDotRule: true
-}));
-
-const router = express.Router();
-router.use(cors())
-app.use(router);
+const router = require('./routes');
 
 const rateLimit = require("express-rate-limit");
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100
-});
+  max: 10 });
 
 app.use(limiter);
 
+app.use(
+  cookieSession({
+    name: 'session',
+    keys: ['Ghdur687399s7w', 'hhjjdf89s866799'],
+  })
+);
 
-router.get("/",function(req,res){ 
-	
-	res.sendFile("index.html");
-	}); 
+app.use('/', router);
 
-router.post("/message", jsonParser, function(req,res){
-	
-	let msg = req.body;
-	//console.log (msg);
-	let api_url = process.env.API_URL;
-	
-	
-	try {
-		
-		axios.get( api_url + '/model_call', { params: { message: msg.content } })
-		.then((r)=> {
-			 
-			res.json({
-				success : true,
-				message : r.data.response,
-			});
-		});
-		 
-	} catch(e) {
-		
-		 res.json({
-			success : false,
-			message : 'Server processing error..',
-		 });
-	}
-	
- });
+app.use((err, request, response, next) => {
 
-
-
-
-// ------------------- START APP -------------------------
-// ======================================================
-
-app.listen(PORT,function(){
-  console.log("Starting app ...");
+  response.locals.message = err.message;
+  console.error(err);
+  const status = err.status || 500;
+  response.locals.status = status;
+  response.status(status);
+  response.render('error');
 });
 
+app.listen(PORT,function(){
+  console.log("Starting server");
+});
