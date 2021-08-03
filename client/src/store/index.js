@@ -25,7 +25,7 @@ export default new Vuex.Store({
 	  loadItems ({ commit }) {
 		  
       	Vue.axios
-        	.get('https://nlp-app.club/file/list/:5', 
+        	.get('https://test-bot.club/nlp', 
 				 { 'headers': { 'Authorization': 'Bearer ' + Vue.$cookies.get('zimad_token') }}
 			).then(r => r.data)
 			.then(d => { 

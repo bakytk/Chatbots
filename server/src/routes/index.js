@@ -4,6 +4,6 @@ const router = express.Router();
 
 const { message_handler } = require('../controllers/message');
 
-router.post("/message", message_handler)
+router.post("/nlp", message_handler)
 
 module.exports = router;

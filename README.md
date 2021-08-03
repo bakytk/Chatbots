@@ -5,15 +5,10 @@
 
 The goal of this project is to deploy several transformer-based chatbots from HuggingFace repos, serving them with Flask, while building client-interfacing web stack is on Vue.js-Node.js
 
-The first bot is based on Microsof't DialoBot, which can be pulled from HuggingFace, and can be tested at the following [link](https://www.linkedin.com/learning/paths/become-a-node-js-developer)
+The project is work in progress ..
 
-```
-# set ENV_PARAMS in .env:
-
-VUE_PORT=8080 (optional: if you 'npm run serve')
-NODE_PORT=7000
-FLASK_PORT=9000
-```
+The first bot is based on Microsof't DialoBot and can be tested at the following link: <br/>
+https://nlp-api.netlify.app
 
 ```
 

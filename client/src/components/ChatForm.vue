@@ -201,7 +201,7 @@ export default {
             let msg = Object.assign({}, message);
             console.log (msg)
 
-            this.$axios.post('/message', message)
+            this.$axios.post('/nlp', message)
             .then(resp => { 
 
 	            if (resp.data.success == true) {
