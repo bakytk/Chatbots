@@ -4,10 +4,18 @@ const PORT = process.env.NODE_PORT;
 
 const express = require('express');
 const app = express();
+const mongoose = require ('mongoose');
 
 app.set('trust proxy', 1);
 
 //const createError = require('http-errors');
+
+// mongoose connection
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:37017/nlpMessages', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 const bodyParser= require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }));
