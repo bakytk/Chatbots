@@ -16,6 +16,7 @@ module.exports = {
 			participant_id: Number(req.body.participantId),
 			timestamp: req.body.timestamp
 		}
+		console.log(msg_body)
 
     let newMessage = new Message(msg_body);
 
