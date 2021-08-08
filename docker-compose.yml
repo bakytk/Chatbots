@@ -1,9 +1,20 @@
 version: '3'
 
 services:
+  py_bot:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    #restart: always
+    container_name: py_bot
+    command: python3 api.py
+    ports:
+      - "12000:12000"
+    volumes:
+      - ./api:/flask-app
   nodejs:
     build:
-      context: .
+      context: ./server
       dockerfile: Dockerfile
     #restart: always
     image: nodejs
@@ -11,6 +22,7 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
+      - API_URL=$API_URL
       - MONGO_USERNAME=$MONGO_USERNAME
       - MONGO_PASSWORD=$MONGO_PASSWORD
       - MONGO_HOSTNAME=db
@@ -19,11 +31,13 @@ services:
     ports:
       - "10000:10000"
     volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
+      - ./server:/node-app
+      - ./server/node_modules:/node-app/node_modules
     networks:
       - app-network
-    command: ./wait-for.sh db:27017 -- /home/node/app/node_modules/.bin/nodemon server.js
+    command: ./wait-for.sh db:27017 -- node server.js
+    depends_on:
+      - py_bot
 
   db:
     image: mongo:4.1.8-xenial

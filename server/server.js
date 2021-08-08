@@ -11,15 +11,16 @@ app.set('trust proxy', 1);
 
 
 //const db = require('./db');
+
 //mongoose connection
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:37017/nlpMessages', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
 }).then( function() {
   console.log('MongoDB is connected');
 })
+
 
 const bodyParser= require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }));

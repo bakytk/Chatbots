@@ -1,4 +1,11 @@
-torch
-transformers
-sqlalchemy
 
+Flask==2.0.1
+Flask-Cors==3.0.10
+huggingface-hub==0.0.8
+psycopg2-binary==2.8.6
+python-dotenv==0.17.1
+requests==2.25.1
+SQLAlchemy==1.4.17
+tokenizers==0.10.3
+torch==1.8.1
+transformers==4.6.1

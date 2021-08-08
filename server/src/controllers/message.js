@@ -5,6 +5,11 @@ const msgSchema = require('../models/msgModel');
 const Message = mongoose.model('Message', msgSchema);
 const axios = require('axios');
 
+const {
+  API_URL,
+} = process.env;
+console.log(API_URL)
+
 module.exports = {
 
 	 message_handler: (req, res) => {
@@ -20,17 +25,21 @@ module.exports = {
 
     let newMessage = new Message(msg_body);
 
-    newMessage.save( async (err, message) => {
+    newMessage.save( async (error, message) => {
 
-        if (err) { res.send(err);}
+        if (error) {
+					console.log('error1\n', error)
+					//res.send('Server error');
+				}
 
-				let api_url = process.env.API_URL;
 		  	try {
 
 					let parameters = { params: { message: req.body.content } }
-					let response = await axios.get( api_url + '/model_call', parameters)
+					let response = await axios.get( API_URL + '/model_call', parameters)
 
 					let response_body = response.data.response
+					console.log('response_body', response_body)
+
 		      let jsn = {
 						success : true,
 						message : response_body }
@@ -38,10 +47,11 @@ module.exports = {
 
 		  	 } catch(error) {
 
-		  		res.json({
-						success : false,
-						message : 'Processing error' });
-				 }
+					  console.log('error2\n', error)
+			  		res.json({
+							success : false,
+							message : 'Processing error' });
+					 }
     });
 
 	}
