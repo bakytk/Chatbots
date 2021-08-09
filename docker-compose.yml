@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+
   py_bot:
     build:
       context: ./api
@@ -14,6 +15,7 @@ services:
       - ./api:/flask-app
     networks:
       - app-network
+
   nodejs:
     build:
       context: ./server

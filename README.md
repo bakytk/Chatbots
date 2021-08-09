@@ -18,7 +18,7 @@ The features of this app:
 
 ```
 
-# project is a work-in-progress, but is already runnable with the following commands:
+# work-in-progress, but can be tested:
 
 git clone repo-url
 cd download-folder
