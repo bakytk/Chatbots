@@ -12,6 +12,8 @@ services:
       - "12000:12000"
     volumes:
       - ./api:/flask-app
+    networks:
+      - app-network
   nodejs:
     build:
       context: ./server

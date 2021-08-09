@@ -8,7 +8,6 @@ const axios = require('axios');
 const {
   API_URL,
 } = process.env;
-console.log(API_URL)
 
 module.exports = {
 
@@ -21,7 +20,6 @@ module.exports = {
 			participant_id: Number(req.body.participantId),
 			timestamp: req.body.timestamp
 		}
-		console.log(msg_body)
 
     let newMessage = new Message(msg_body);
 
@@ -36,9 +34,7 @@ module.exports = {
 
 					let parameters = { params: { message: req.body.content } }
 					let response = await axios.get( API_URL + '/model_call', parameters)
-
 					let response_body = response.data.response
-					console.log('response_body', response_body)
 
 		      let jsn = {
 						success : true,

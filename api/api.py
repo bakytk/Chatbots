@@ -17,7 +17,6 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 def model_call():
 
 	user_message = request.args.get('message')
-	print ('user_message', user_message)
 	if not user_message:
 		return jsonify(error='No input provided')
 	response = get_response (user_message)

@@ -10,16 +10,17 @@ app.set('trust proxy', 1);
 //const createError = require('http-errors');
 
 
-//const db = require('./db');
+const db = require('./db');
 
 //mongoose connection
-
+/*
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:37017/nlpMessages', {
     useNewUrlParser: true,
 }).then( function() {
   console.log('MongoDB is connected');
 })
+*/
 
 
 const bodyParser= require('body-parser')
