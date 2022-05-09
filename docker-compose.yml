@@ -9,6 +9,8 @@ services:
     #restart: always
     container_name: py_bot
     command: python3 api.py
+    environment:
+      - EXPRESS_PORT=$EXPRESS_PORT
     ports:
       - "12000:12000"
     volumes:
