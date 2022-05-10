@@ -1,6 +1,6 @@
 
 require('dotenv').config()
-const PORT = process.env.EXPRESS_PORT;
+const PORT = process.env.EXPRESS_PORT || "30000";
 
 const express = require('express');
 const app = express();
@@ -13,14 +13,13 @@ app.set('trust proxy', 1);
 const db = require('./db');
 
 //mongoose connection
-/*
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:37017/nlpMessages', {
-    useNewUrlParser: true,
-}).then( function() {
-  console.log('MongoDB is connected');
-})
-*/
+// mongoose.Promise = global.Promise;
+// mongoose.connect('mongodb://localhost:37017/nlpMessages', {
+//     useNewUrlParser: true,
+// }).then( function() {
+//   console.log('MongoDB is connected');
+// })
+
 
 
 const bodyParser= require('body-parser')
@@ -38,11 +37,11 @@ const limiter = rateLimit({
   max: 10 });
 
 app.use(limiter);
-
 app.use('/', router);
 
 app.use((err, request, response, next) => {
 
+  //console.log("request", request);
   response.locals.message = err.message;
   console.error(err);
   const status = err.status || 500;
@@ -52,5 +51,5 @@ app.use((err, request, response, next) => {
 });
 
 app.listen(PORT,function(){
-  console.log("Starting server");
+  console.log("Starting server on port:", PORT);
 });

@@ -20,7 +20,7 @@ Vue.use(Vueaxios, axios);
 //http://localhost:10000
 const axiosConfig = {
 
-	baseURL: 'https://test-bot.club',
+	baseURL: 'https://lingua.quest',
 	timeout: 30000,
 };
 Vue.prototype.$axios = axios.create(axiosConfig)

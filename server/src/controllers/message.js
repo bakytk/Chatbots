@@ -13,6 +13,7 @@ module.exports = {
 
 	 message_handler: (req, res) => {
 
+    //console.log("request", req);
 		let msg_body = {
 
 			user_agent: req.headers['user-agent'],
@@ -22,7 +23,6 @@ module.exports = {
 		}
 
     let newMessage = new Message(msg_body);
-
     newMessage.save( async (error, message) => {
 
         if (error) {

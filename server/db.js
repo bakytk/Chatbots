@@ -9,9 +9,10 @@ const {
 } = process.env;
 
 const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+//console.log("url:", url);
 
 const options = {
-
+    useUnifiedTopology: true,
     useNewUrlParser: true,
     reconnectTries: Number.MAX_VALUE,
     reconnectInterval: 500,

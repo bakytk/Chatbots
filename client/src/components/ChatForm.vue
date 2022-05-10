@@ -28,7 +28,7 @@
 </template>
 
 <script>
-	
+
 import { Chat } from 'vue-quick-chat'
 import 'vue-quick-chat/dist/vue-quick-chat.css';
 
@@ -55,7 +55,7 @@ export default {
                 name: 'Guest', id: 2,
                 profilePicture: 'https://i.ibb.co/fXkS9xb/pers.webp'
             },
-            
+
             messages: [
                //{
                //    content: 'received messages',
@@ -123,7 +123,7 @@ export default {
                     borderRadius: '50%'
                 }
             },
-            timestampConfig: {   
+            timestampConfig: {
                 format: 'HH:mm',
                 relative: false
             },
@@ -191,8 +191,8 @@ export default {
 
         onMessageSubmit: function (message) {
 
-            /* 
-             It's important to notice that even when your message wasn't send 
+            /*
+             It's important to notice that even when your message wasn't send
              yet to the server you have to add the message into the array
             */
 
@@ -201,8 +201,8 @@ export default {
             let msg = Object.assign({}, message);
             console.log (msg)
 
-            this.$axios.post('/nlp', message)
-            .then(resp => { 
+            this.$axios.post('/chatbot', message)
+            .then(resp => {
 
 	            if (resp.data.success == true) {
 
@@ -215,12 +215,12 @@ export default {
 					let month = dt.getMonth()+1; // Be careful! January is 0, not 1
 					let year = dt.getFullYear();
 
-					let ts = {year: year, month: month, day: date, 
+					let ts = {year: year, month: month, day: date,
 						hour: hr, minute: min, second: sec, millisecond: milli}
 
 	                msg.content = resp.data.message;
 	                msg.participantId = 1;
-	                msg.timestamp = ts 
+	                msg.timestamp = ts
 
 	                this.messages.push(msg);
             	}
